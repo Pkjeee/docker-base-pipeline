@@ -17,18 +17,17 @@ timestamps {
             }
             sh 'docker push pramodvishwakarma/my-app:1.0.0'
         }
-        stage('\u2784 Removing Exited Containers'){
-            def DockerRm = 'docker rm My-Tomcat-App'
+        stage('\u2784 Remove Containers'){
+            def DockerRm = 'docker rm -f My-Tomcat-App'
             sshagent(['SSH-KEY-102']) {
             sh "ssh -o StrictHostKeyChecking=no root@192.168.56.102 ${DockerRm}"            
         }
-        stage('\u2785 Deployment Container on 102'){
+        stage('\u2785 Deploy New Container'){
             def DockerRun = 'docker run -p 8080:8080 -d --name My-Tomcat-App pramodvishwakarma/my-app:1.0.0'
             sshagent(['SSH-KEY-102']) {
             sh "ssh -o StrictHostKeyChecking=no root@192.168.56.102 ${DockerRun}"
             }
         }
-   
     }
   }
 }
