@@ -20,7 +20,8 @@
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
 			<scope>test</scope>
-		</dependency>	
+		</dependency>
+	
 	</dependencies>
 	
 <build>
@@ -39,35 +40,7 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>2.19</version>
         </plugin>
-	<plugin>
-	  <groupId>org.apache.maven.plugins</groupId>
-	  <artifactId>maven-pmd-plugin</artifactId>
-	  <version>3.10.0</version>
-	</plugin>
-	<plugin>
-	  <groupId>com.github.spotbugs</groupId>
-	  <artifactId>spotbugs-maven-plugin</artifactId>
-  <version>3.1.1</version>
-  <configuration>
-    <effort>Max</effort>
-    <threshold>Low</threshold>
-    <failOnError>true</failOnError>
-<!--    <includeFilterFile>${session.executionRootDirectory}/spotbugs-include.xml</includeFilterFile> -->
-    <plugins>
-      <plugin>
-        <groupId>com.h3xstream.findsecbugs</groupId>
-        <artifactId>findsecbugs-plugin</artifactId>
-        <version>LATEST</version> <!-- Auto-update to the latest stable -->
-      </plugin>
-    </plugins>
-  </configuration>
-</plugin>
     </plugins>
 </build>
-<properties>
-  <sonar.java.spotbugs.reportPaths>./target/report/spotbugs.xml</sonar.java.spotbugs.reportPaths>
-  <sonar.java.pmd.reportPaths>./target/report/pmd.xml</sonar.java.pmd.reportPaths>
-  <sonar.java.checkstyle.reportPaths>./target/report/checkstyle.xml</sonar.java.checkstyle.reportPaths>
-<!-- <sonar.host.url>http://192.168.56.102:9000</sonar.host.url> -->
-</properties>
+	
 </project>
